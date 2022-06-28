@@ -11,6 +11,27 @@
                 "${workspaceRoot}/.vscode/generate_compdb.py"
             ],
             "problemMatcher": []
+        },
+        {
+            "label": "qemu",
+            "type": "shell",
+            "command": "setsid",
+            "args": [
+                "/usr/bin/terminator",
+                "-x", "qemu-system-aarch64",
+                "-kernel", "${workspaceFolder}/arch/arm64/boot/Image",
+                "-initrd", "${workspaceFolder}/initrd.arm64",
+                "-cpu", "cortex-a72",
+                "-M", "virt",
+                "-smp", "2",
+                "-m", "2048",
+                "-append", "loglevel=10 root=/dev/ram console=ttyAMA0 init=/init nokaslr",
+                "-serial", "stdio",
+                "-monitor", "tcp:127.0.0.1:1122,server,nowait",
+                "-nographic",
+                "-S", "-s"
+
+            ],
         }
     ]
 }
