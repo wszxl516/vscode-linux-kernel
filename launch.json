@@ -1,20 +1,43 @@
 {
-    // 使用 IntelliSense 了解相关属性。 
-    // 悬停以查看现有属性的描述。
-    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    //Debug with GDB
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Remote attach",
+            "name": "Linux with gdb",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "qemu",
+            "program": "${workspaceFolder}/vmlinux",
+            "cwd": "${workspaceFolder}",
+            "miDebuggerPath": "/usr/bin/gdb-multiarch",
+            "MIMode": "gdb",
+            "launchCompleteCommand": "exec-run",
+            "setupCommands": [
+                {
+                    "description": "load symbol",
+                    "text": "load ${workspaceFolder}/vmlinux",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "remote target",
+                    "text": "target remote:1234",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        //Debug with LLDB
+        {
+            "name": "Linux with lldb",
             "type": "lldb",
             "request": "custom",
             "preLaunchTask": "qemu",
             "waitFor": true,
             "terminal": "console",
-            "targetCreateCommands" : ["target create ${workspaceFolder}/vmlinux"],
+            "targetCreateCommands": [
+                "target create ${workspaceFolder}/vmlinux"
+            ],
             "processCreateCommands": [
-                "gdb-remote localhost:1234", 
-                "b start_kernel",
+                "gdb-remote localhost:1234",
             ],
         }
     ]

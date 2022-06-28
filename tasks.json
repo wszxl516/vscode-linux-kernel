@@ -1,6 +1,5 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
+    //qemu task for linux debug
     "version": "2.0.0",
     "tasks": [
         {
@@ -18,19 +17,29 @@
             "command": "setsid",
             "args": [
                 "/usr/bin/terminator",
-                "-x", "qemu-system-aarch64",
-                "-kernel", "${workspaceFolder}/arch/arm64/boot/Image",
-                "-initrd", "${workspaceFolder}/initrd.arm64",
-                "-cpu", "cortex-a72",
-                "-M", "virt",
-                "-smp", "2",
-                "-m", "2048",
-                "-append", "loglevel=10 root=/dev/ram console=ttyAMA0 init=/init nokaslr",
-                "-serial", "stdio",
-                "-monitor", "tcp:127.0.0.1:1122,server,nowait",
+                "-x",
+                "qemu-system-aarch64",
+                "-kernel",
+                "${workspaceFolder}/arch/arm64/boot/Image",
+                "-initrd",
+                "${workspaceFolder}/initrd.arm64",
+                "-cpu",
+                "cortex-a72",
+                "-M",
+                "virt",
+                "-smp",
+                "2",
+                "-m",
+                "2048",
+                "-append",
+                "loglevel=10 root=/dev/ram console=ttyAMA0 init=/init nokaslr",
+                "-serial",
+                "stdio",
+                "-monitor",
+                "tcp:127.0.0.1:1122,server,nowait",
                 "-nographic",
-                "-S", "-s"
-
+                "-S",
+                "-s"
             ],
         }
     ]
