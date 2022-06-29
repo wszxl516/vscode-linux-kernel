@@ -12,6 +12,7 @@
             "miDebuggerPath": "/usr/bin/gdb-multiarch",
             "MIMode": "gdb",
             "launchCompleteCommand": "exec-run",
+            "stopAtConnect": true,
             "setupCommands": [
                 {
                     "description": "load symbol",
@@ -33,6 +34,7 @@
             "preLaunchTask": "qemu",
             "waitFor": true,
             "terminal": "console",
+            "stopAtConnect": true,
             "targetCreateCommands": [
                 "target create ${workspaceFolder}/vmlinux"
             ],
