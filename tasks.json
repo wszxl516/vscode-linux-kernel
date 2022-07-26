@@ -33,14 +33,17 @@
                 "2048",
                 "-append",
                 "loglevel=10 root=/dev/ram console=ttyAMA0 init=/init nokaslr",
+                "-chardev",
+                "stdio,id=ttys0,signal=off",
                 "-serial",
-                "stdio",
+                "chardev:ttys0",
                 "-monitor",
                 "tcp:127.0.0.1:1122,server,nowait",
+                "-drive", "media=disk,file=/opt/linux/disk.qcow2,format=qcow2",
                 "-nographic",
                 "-S",
                 "-s"
-            ],
+            ]
         }
     ]
 }
