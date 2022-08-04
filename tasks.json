@@ -14,9 +14,8 @@
         {
             "label": "qemu",
             "type": "shell",
-            "command": "setsid",
+            "command": "/usr/bin/terminator",
             "args": [
-                "/usr/bin/terminator",
                 "-x",
                 "qemu-system-aarch64",
                 "-kernel",
@@ -32,7 +31,7 @@
                 "-m",
                 "2048",
                 "-append",
-                "loglevel=10 root=/dev/ram console=ttyAMA0 init=/init nokaslr",
+                "loglevel=10 root=/dev/ram console=ttyAMA0 init=/init nokaslr loglevel=15",
                 "-chardev",
                 "stdio,id=ttys0,signal=off",
                 "-serial",
@@ -43,7 +42,25 @@
                 "-nographic",
                 "-S",
                 "-s"
-            ]
+            ],
+            "isBackground": true,
+            "problemMatcher": [
+                {
+                  "pattern": [
+                    {
+                      "regexp": ".+",
+                      "file": 1,
+                      "location": 2,
+                      "message": 3
+                    }
+                  ],
+                  "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": ".+",
+                    "endsPattern": ".+",
+                  }
+                }
+              ]
         }
     ]
 }
